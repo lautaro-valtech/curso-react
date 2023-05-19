@@ -16,6 +16,7 @@ export const TodoItem = ({
       <span
         className={`align-self-center ${conditionalStyle.decorationLine}`}
         onClick={() => onToggleTodo(id)}
+        aria-label='span'
       >
         {description}
       </span>
@@ -27,17 +28,17 @@ export const TodoItem = ({
 };
 
 TodoItem.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
-  done: PropTypes.bool,
+  done: PropTypes.bool.isRequired,
   onDeleteTodo: PropTypes.func.isRequired,
   onToggleTodo: PropTypes.func.isRequired,
 };
 
-TodoItem.defaultProps = {
-  id: null,
-  description: null,
-  done: false,
-  onDeleteTodo: () => {},
-  onToggleTodo: () => {},
-};
+// TodoItem.defaultProps = {
+//   id: null,
+//   description: null,
+//   done: false,
+//   onDeleteTodo: () => {},
+//   onToggleTodo: () => {},
+// };
