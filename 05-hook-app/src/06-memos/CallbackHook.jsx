@@ -1,12 +1,20 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { ShowIncrement } from './ShowIncrement';
 
 export const CallbackHook = () => {
   const [counter, setCounter] = useState(10);
 
-  const incrementFather = () => {
-    setCounter(counter + 1);
-  };
+  const incrementFather = useCallback((cant) => {
+    setCounter((currentState) => currentState + cant);
+  }, []);
+
+  // const incrementFather = () => {
+  //   setCounter(counter + 1);
+  // };
+
+  useEffect(() => {
+    // incrementFather();
+  }, [incrementFather]);
 
   return (
     <>
