@@ -8,6 +8,7 @@ import { getHeroesByName } from '../helpers';
 export const SearchPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
   const { q = '' } = queryString.parse(location.search);
   const heroes = getHeroesByName(q);
 
@@ -32,7 +33,7 @@ export const SearchPage = () => {
         <div className='col-5'>
           <h4>Searching</h4>
           <hr />
-          <form onSubmit={onSearchSubmit}>
+          <form onSubmit={onSearchSubmit} aria-label='form'>
             <input
               type='text'
               placeholder='Search a hero'
@@ -61,6 +62,7 @@ export const SearchPage = () => {
           <div
             className='alert alert-danger animate__animated animate__fadeIn'
             style={{ display: showError ? '' : 'none' }}
+            data-testid='alert-danger'
           >
             No hero with <b>{q}</b>
           </div>
